@@ -9,6 +9,7 @@
 	* SimpleUsers is a small-scale and flexible way of adding
 	* user management to your website or web applications.
 	*/
+    define("PREFIX", "j3#85y583@");
 
 	class SimpleUsers
 	{
@@ -531,10 +532,10 @@
 
 		private function _generateSalt()
 		{
-			$salt = null;
+			$salt = "";
 
 			while( strlen($salt) < 128 )
-				$salt = $salt.uniqid(null, true);
+				$salt = $salt.uniqid(PREFIX, true);
 
 			return substr($salt, 0, 128);
 		}
