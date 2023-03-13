@@ -15,7 +15,7 @@
 	// If the user is logged in, the value is (bool)true - otherwise (bool)false.
 	if( !$SimpleUsers->logged_in )
 	{
-		header("Location: login.php");
+		header("Location: login");
 		exit;
 	}
 
@@ -38,7 +38,7 @@
     {
     	// Input validation is ok, set the password and then redirect
 			$SimpleUsers->setPassword($_POST["password"], $user["userId"]);
-			header("Location: users.php");
+			header("Location: users");
 			exit;
 		}
 

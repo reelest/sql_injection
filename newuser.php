@@ -27,19 +27,14 @@
 				$error = "Username already taken.";
 			else
 			{
-					header("Location: users.php");
+					header("Location: users");
 					exit;
 			}
 		}
 
 	} // Validation end
-
+    include "templates/header.php";
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-	<head>
-		<title></title>
-	  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 	  <style type="text/css">
 
 			* {	margin: 0px; padding: 0px; }
@@ -103,6 +98,7 @@
 			</p>
 
 		</form>
+		<span> Already have an account? </span>
+		<a href="/login">Sign in instead</a>
 
-	</body>
-</html>
+<?php include "templates/footer.php" ?>

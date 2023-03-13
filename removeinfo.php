@@ -15,7 +15,7 @@
 	// If the user is logged in, the value is (bool)true - otherwise (bool)false.
 	if( !$SimpleUsers->logged_in )
 	{
-		header("Location: login.php");
+		header("Location: login");
 		exit;
 	}
 
@@ -25,7 +25,7 @@
 	$db_key = urldecode($_GET["db_key"]);
 	
 	$SimpleUsers->removeInfo($db_key, $userId);
-	header("Location: users.php");
+	header("Location: users");
 	exit;
 	
 
