@@ -247,8 +247,8 @@
 					$userInfo[$key] = $value;
 			}
 			
-			$user = $this->getSingleUser($userId);
-			$userInfo = array_merge($userInfo, $user);
+			# $user = $this->getSingleUser($userId);
+			# $userInfo = array_merge($userInfo, $user);
 			asort($userInfo);
 
 			return $userInfo;
