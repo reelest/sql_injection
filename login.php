@@ -31,7 +31,6 @@
       } else {
         $error = "Invalid csrf token";
       }
-    }
 
     } // Validation end
     include "templates/header.php";
