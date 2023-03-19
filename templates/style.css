@@ -1,0 +1,122 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    /* border: 1px dotted grey !important; */
+}
+body {
+    font-family: Montserrat, Verdana, "Sans Serif";
+    color: #333333;
+}
+table {
+    width: 800px;
+    margin: 0px auto;
+}
+
+th,
+td {
+    padding: 3px;
+}
+
+.right {
+    text-align: right;
+}
+
+.center{
+    text-align: center;
+}
+
+h1 {
+    color: #0d47a1;
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+p {
+    margin: 24px 0;
+}
+.faded {
+    color: #a0a0a0;
+}
+
+.error{
+    color: #e40000;
+}
+/* Layout #2 */
+.layout-2 {
+    display: flex;
+    min-height: 100vh;
+}
+
+.layout-2_main {
+    width: 100%;
+    padding: 32px 16px;
+}
+.layout-2_aside {
+    min-width: 50%;
+    display: none;
+    background: url('/assets/backdrop.jpg');
+    background-size: contain;
+}
+@media screen and (min-width: 600px) {
+    .layout-2_main {
+        width: 50%;
+        padding: 32px 32px;
+        max-width: 450px;
+    }
+    p {
+        margin: 32px 0;
+    }
+    .layout-2_aside {
+        display: block;
+        flex-grow: 1;
+    }
+}
+
+label {
+    font-size: 0.9rem;
+    color: #555555;
+}
+
+button,
+input {
+    width: 100%;
+    height: 2.25em;
+    font-size: 1rem;
+    font-family: inherit;
+    padding: 0 8px;
+    border-radius: 4px;
+    margin: 0;
+    color: inherit;
+}
+
+input[type="text"],
+input[type="password"] {
+    border: 1px solid grey;
+    outline-color: #2196f3;
+}
+
+button,
+input[type="submit"] {
+    margin-top: 8px;
+    background: #2196f3;
+    border: none;
+    color: white;
+}
+button:hover,
+input[type="submit"]:hover {
+    box-shadow: 1px 1px 5px #2196f3;
+}
+button:active,
+input[type="submit"]:active {
+    background: #0d47a1;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+    text-decoration:none;
+}

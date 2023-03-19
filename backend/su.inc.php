@@ -7,12 +7,12 @@
 
 
 	/**
-	* This file includes what is needed by the simpleusers system
+	* This file includes what is needed by the backend system
 	*/
 
 	$path = dirname(__FILE__);
 
 	include($path."/config.inc.php");
-	include($path."/users.obj.php");
+    include($path."/choose_implementation.php");
 
 ?>

@@ -7,7 +7,7 @@
 	*/
 
 	session_start();
-	require_once(dirname(__FILE__)."/simpleusers/su.inc.php");
+	require_once(dirname(__FILE__)."/backend/su.inc.php");
 
 	$SimpleUsers = new SimpleUsers();
 

@@ -7,7 +7,7 @@
 	*/
 
 	session_start();
-	require_once(dirname(__FILE__)."/simpleusers/su.inc.php");
+	require_once(dirname(__FILE__)."/backend/su.inc.php");
 
 	$SimpleUsers = new SimpleUsers();
 
@@ -16,6 +16,8 @@
 	{
 		if( empty($_POST["username"]) || empty($_POST["password"]) )
 			$error = "You have to choose a username and a password";
+        else if($_POST["password"] != $_POST["confirmpassword"])
+            $error = "Both passwords must match";
     else
     {
     	// Both fields have input - now try to create the user.
@@ -35,49 +37,13 @@
 	} // Validation end
     include "templates/header.php";
 ?>
-	  <style type="text/css">
-
-			* {	margin: 0px; padding: 0px; }
-			body
-			{
-				padding: 30px;
-				font-family: Calibri, Verdana, "Sans Serif";
-				font-size: 12px;
-			}
-			table
-			{
-				width: 800px;
-				margin: 0px auto;
-			}
-
-			th, td
-			{
-				padding: 3px;
-			}
-
-			.right
-			{
-				text-align: right;
-			}
-
-	  	h1
-	  	{
-	  		color: #FF0000;
-	  		border-bottom: 2px solid #000000;
-	  		margin-bottom: 15px;
-	  	}
-
-	  	p { margin: 10px 0px; }
-	  	p.faded { color: #A0A0A0; }
-
-	  </style>
-	</head>
-	<body>
-
-		<h1>Register new user</h1>
+    </head>
+	<body class="layout-2">
+        <div class="layout-2_main">
+		<h1>Register as new user</h1>
 
 		<?php if( isset($error) ): ?>
-		<p>
+		<p class='error'>
 			<?php echo $error; ?>
 		</p>
 		<?php endif; ?>
@@ -85,20 +51,33 @@
 		<form method="post" action="">
 			<p>
 				<label for="username">Username:</label><br />
-				<input type="text" name="username" id="username" />
+<?php 
+    $username = "";
+    if(isset($_POST["username"])) 
+        $username = addslashes($_POST["username"]);
+    echo '<input type="text" name="username" id="username" value="'.$username.'"/>' ?>
 			</p>
 
 			<p>
 				<label for="password">Password:</label><br />
-				<input type="text" name="password" id="password" />
+				<input type="password" name="password" id="password" />
+			</p>
+<p>
+				<label for="confirmpassword">Confirm password:</label><br />
+				<input type="password" name="confirmpassword" id="confirmpassword" />
 			</p>
 
+
 			<p>
-				<input type="submit" name="submit" value="Register" />
+				<input type="submit" name="submit" value="Create account" />
 			</p>
 
 		</form>
-		<span> Already have an account? </span>
-		<a href="/login">Sign in instead</a>
 
+		<p class='center'> Already have an account? 
+	    <a href="/login"><button>Log in instead</button></a>
+</p>
+    </div>
+    <div class="layout-2_aside">
+    </div>
 <?php include "templates/footer.php" ?>

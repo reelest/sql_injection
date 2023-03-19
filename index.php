@@ -7,7 +7,7 @@
 	*/
 
 	session_start();
-	require_once(dirname(__FILE__)."/simpleusers/su.inc.php");
+	require_once(dirname(__FILE__)."/backend/su.inc.php");
 
 	$SimpleUsers = new SimpleUsers();
 
@@ -23,44 +23,7 @@
 	$users = $SimpleUsers->getUsers();
     include "templates/header.php";
 ?>
-  <style type="text/css">
-
-			* {	margin: 0px; padding: 0px; }
-			body
-			{
-				padding: 30px;
-				font-family: Calibri, Verdana, "Sans Serif";
-				font-size: 12px;
-			}
-			table
-			{
-				width: 800px;
-				margin: 0px auto;
-			}
-
-			th, td
-			{
-				padding: 3px;
-			}
-
-			.right
-			{
-				text-align: right;
-			}
-
-	  	h1
-	  	{
-	  		color: #FF0000;
-	  		border-bottom: 2px solid #000000;
-	  		margin-bottom: 15px;
-	  	}
-
-	  	p { margin: 10px 0px; }
-	  	p.faded { color: #A0A0A0; }
-
-	  </style>
-
-	</head>
+  	</head>
 	<body>
 
 		<h1>User administration</h1>

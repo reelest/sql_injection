@@ -13,3 +13,4 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,700;1,300;1,400;1,700&family=Space+Grotesk:wght@300;400;700&display=swap"
       rel="stylesheet"
     />
+    <link href="/templates/style.css?1" rel="stylesheet" />
