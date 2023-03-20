@@ -14,7 +14,9 @@
 	// Login from post data
     if (isset($_POST["username"])) {
       // Make sure that data hasn't been tampered with
-      $csrf = $SimpleUsers->validateToken();
+      $csrf = true;
+      if(isset($_POST["csrf_token"]))  
+        $csrf = $SimpleUsers->validateToken();
 
       if ($csrf) {
         // Proceed with the code to be executed if data hasn't been tampered
@@ -49,7 +51,11 @@
 		<form method="post" action="">
 			<p>
 				<label for="username">Username:</label><br />
-				<input type="text" name="username" id="username" />
+<?php 
+    $username = "";
+    if(isset($_POST["username"])) 
+        $username = addslashes($_POST["username"]);
+    echo '<input type="text" name="username" id="username" value="'.$username.'"/>' ?>
 			</p>
 
 			<p>
