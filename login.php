@@ -9,20 +9,20 @@
 	session_start();
 	require_once(dirname(__FILE__)."/backend/su.inc.php");
 
-	$SimpleUsers = new SimpleUsers();
+	$db = new SimpleUsers();
 
 	// Login from post data
     if (isset($_POST["username"])) {
       // Make sure that data hasn't been tampered with
       $csrf = true;
       if(isset($_POST["csrf_token"]))  
-        $csrf = $SimpleUsers->validateToken();
+        $csrf = $db->validateToken();
 
       if ($csrf) {
         // Proceed with the code to be executed if data hasn't been tampered
         // Attempt to login the user - if credentials are valid, it returns the
         // users id, otherwise (bool)false.
-        $res = $SimpleUsers->loginUser($_POST["username"], $_POST["password"]);
+        $res = $db->loginUser($_POST["username"], $_POST["password"]);
         if (!$res)
           $error = "You supplied the wrong credentials.";
         else {
@@ -61,7 +61,7 @@
 			<p>
 				<label for="password">Password:</label><br />
 				<input type="password" name="password" id="password" />
-				<?php echo $SimpleUsers->getToken(); ?>
+				<?php echo $db->getToken(); ?>
 			</p>
 
 			<p>
@@ -72,6 +72,9 @@
 		<p class='center'> Don't have an account? 
 	    <a href="/newuser"><button>Create one now</button></a>
 </p>
+<?php if(BACKEND_IMPLEMENTATION < 3): ?>
+<i>Enter <code>')) or '1' = (('1</code> in the password box to bypass using sql injection.</i>
+<?php endif ?>
     </div>
     <div class="layout-2_aside">
     </div>

@@ -9,8 +9,8 @@
 	session_start();
 	require_once(dirname(__FILE__)."/backend/su.inc.php");
 
-	$SimpleUsers = new SimpleUsers();
-    $contents = $SimpleUsers->getUsers();
+	$db = new SimpleUsers();
+    $contents = $db->getUsers();
     include "templates/header.php";
 ?>
   	</head>

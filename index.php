@@ -9,49 +9,38 @@
 	session_start();
 	require_once(dirname(__FILE__)."/backend/su.inc.php");
 
-	$SimpleUsers = new SimpleUsers();
+	$db = new SimpleUsers();
 
 	// This is a simple way of validating if a user is logged in or not.
 	// If the user is logged in, the value is (bool)true - otherwise (bool)false.
-	if( !$SimpleUsers->logged_in )
+	if( !$db->logged_in )
 	{
 		header("Location: login");
 		exit;
 	}
-
 	// If the user is logged in, we can safely proceed.
-	$users = $SimpleUsers->getUsers();
+
+    if(isset($_POST["secret"])){
+        $db->setInfo("uUserSecret", $_POST["secret"]);
+    }
+
+    $user = $db->getSingleUser();
+    $secret = $db->getInfo("uUserSecret");
     include "templates/header.php";
 ?>
   	</head>
-	<body>
-
-		<h1>User administration</h1>
-		<table cellpadding="0" cellspacing="0" border="1">
-			<thead>
-				<tr>
-					<th>Username</th>
-					<th>Last activity</th>
-					<th>Created</th>
-					<th></th>
-				</tr>
-			</thead>
-			<tfoot>
-				<tr>
-					<td colspan="4" class="right">
-						<a href="newuser.php">Create new user</a> | <a href="logout.php">Logout</a>
-					</td>
-				</tr>
-			</tfoot>
-			<tbody>
-				<?php foreach( $users as $user ): ?>
-				<tr>
-					<td><?php echo $user["uUsername"]; ?></td>
-					<td class="right"><?php echo $user["uActivity"]; ?></td>
-					<td class="right"><?php echo $user["uCreated"]; ?></td>
-					<td class="right"><a href="deleteuser.php?userId=<?php echo $user["userId"]; ?>">Delete</a> | <a href="userinfo.php?userId=<?php echo $user["userId"]; ?>">User info</a> | <a href="changepassword.php?userId=<?php echo $user["userId"]; ?>">Change password</a></td>
-				</tr>
-				<?php endforeach; ?>
-			</tbody>
-		</table>
+	<body style="margin:auto;padding:16px;max-width:600px">
+<h1>Dashboard</h1>
+    <p>Welcome <?= htmlentities($user["uUsername"]) ?>,
+</p>    
+    <form method="post" action="">  
+    <p>  
+<label for="secret">Your secret information is </label>
+    <?= '<input type="text" id="secret" name="secret" value="'.addslashes($secret).'" />'; ?>
+    </p>
+<p>   
+ <input type="submit" name="updateSecret" id="updateSecret"/>
+</p>
+    </form>
+<p><i>This information is to be kept secret and only accessible to logged in users</i></p>
 <?php include "templates/footer.php" ?>

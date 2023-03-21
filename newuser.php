@@ -9,7 +9,7 @@
 	session_start();
 	require_once(dirname(__FILE__)."/backend/su.inc.php");
 
-	$SimpleUsers = new SimpleUsers();
+	$db = new SimpleUsers();
 
 	// Validation of input
 	if( isset($_POST["username"]) )
@@ -23,7 +23,7 @@
     	// Both fields have input - now try to create the user.
     	// If $res is (bool)false, the username is already taken.
     	// Otherwise, the user has been added, and we can redirect to some other page.
-			$res = $SimpleUsers->createUser($_POST["username"], $_POST["password"]);
+			$res = $db->createUser($_POST["username"], $_POST["password"]);
 
 			if(!$res)
 				$error = "Username already taken.";

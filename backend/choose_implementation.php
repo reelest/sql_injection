@@ -3,13 +3,6 @@
 	define("BACKEND_IMPLEMENTATION", 1);
 
     switch(BACKEND_IMPLEMENTATION){
-        /* Reference implementation */
-        case 0:
-            /* 0 - This backend is not vulnerable to sql injection*/
-            include($path."/implementation-safe.php");
-            break;
-
-
         /* In-band SQL Injection attacks */
         case 1:
             /* 1 - This backend is vulnerable to basic sql injection attacks using 1 = 1*/
@@ -30,6 +23,13 @@
             /* 4 - This backend is vulnerable to time-based sql injection attacks */
             include($path."/implementation-time.php");
             break;
+        
+        /* Reference implementation */
+        case 5:
+            /* 0 - This backend is not vulnerable to sql injection*/
+            include($path."/implementation-safe.php");
+            break;
+
     }
 
 ?>
