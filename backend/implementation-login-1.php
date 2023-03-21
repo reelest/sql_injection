@@ -30,7 +30,29 @@
 			$this->logged_in = true;
 
 			return $userId;
-		}
+		}    
+
+		/**
+		* Returns a (int)user id, if the user was created succesfully.
+		* If not, it returns (bool)false.
+		*
+		* @param	username	The desired username
+		*	@param	password	The desired password
+		*	@return	The user id or (bool)false (if the user already exists)
+		*/
+
+		public function createUser( $username, $password )
+		{
+			$salt = $this->_generateSalt();
+			$password = $salt.$password;
+
+			$sql = "INSERT INTO users VALUES (NULL, '$username', SHA1('$password'), '$salt', NOW(), NOW())";
+
+			if( $this->mysqli->query($sql) )
+				return $this->mysqli->insert_id;
+				
+            return false;
+        }
         
     }
 ?>

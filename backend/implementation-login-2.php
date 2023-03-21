@@ -5,7 +5,8 @@
     include $path."/base.php";
 
     class SimpleUsers extends BaseUserHandler{
-		/**
+        /**
+        * This implementation is vulnerable to SQL Injection attack using 'OR 1=1'
 		* Pairs up username and password as registrered in the database.
 		* If the username and password is correct, it will return (int)user id of
 		* the user which credentials has been passed and set the session, for
@@ -18,19 +19,13 @@
 
 		public function loginUser( $username, $password )
 		{
-			$sql = "SELECT userId FROM users WHERE uUsername=? AND SHA1(CONCAT(uSalt, ?))=uPassword LIMIT 1";
-			if( !$this->stmt = $this->mysqli->prepare($sql) )
-				throw new Exception("MySQL Prepare statement failed: ".$this->mysqli->error);
+            $sql = "SELECT userId FROM users WHERE uUsername='$username' AND SHA1(CONCAT(uSalt, '$password'))=uPassword LIMIT 1";
+            $result = $this->mysqli->query($sql);
 
-			$this->stmt->bind_param("ss", $username, $password);
-			$this->stmt->execute();
-			$this->stmt->store_result();
-
-			if( $this->stmt->num_rows == 0)
+			if($result->num_rows == 0)
 				return false;
 
-			$this->stmt->bind_result($userId);
-			$this->stmt->fetch();
+			$userId = $result->fetch_assoc()['userId'];
 
 			$_SESSION[$this->sessionName]["userId"] = $userId;
 			$this->logged_in = true;
@@ -38,5 +33,26 @@
 			return $userId;
 		}
         
+		/**
+		* Returns a (int)user id, if the user was created succesfully.
+		* If not, it returns (bool)false.
+		*
+		* @param	username	The desired username
+		*	@param	password	The desired password
+		*	@return	The user id or (bool)false (if the user already exists)
+		*/
+
+		public function createUser( $username, $password )
+		{
+			$salt = $this->_generateSalt();
+			$password = $salt.$password;
+
+			$sql = "INSERT INTO users VALUES (NULL, '$username', SHA1('$password'), '$salt', NOW(), NOW())";
+
+			if( $this->mysqli->query($sql) )
+				return $this->mysqli->insert_id;
+				
+            return false;
+        }
     }
 ?>

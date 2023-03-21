@@ -12,7 +12,7 @@
 
         /* In-band SQL Injection attacks */
         case 1:
-            /* 1 - This backend is vulnerable to basic sql injection attacks using 1 = 1 */
+            /* 1 - This backend is vulnerable to basic sql injection attacks using 1 = 1*/
             include($path."/implementation-login-1.php");
             break;
         case 2:

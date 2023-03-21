@@ -7,6 +7,7 @@
 body {
     font-family: Montserrat, Verdana, "Sans Serif";
     color: #333333;
+    padding: 32px 0;
 }
 table {
     width: 800px;
@@ -22,7 +23,7 @@ td {
     text-align: right;
 }
 
-.center{
+.center {
     text-align: center;
 }
 
@@ -39,13 +40,14 @@ p {
     color: #a0a0a0;
 }
 
-.error{
+.error {
     color: #e40000;
 }
 /* Layout #2 */
 .layout-2 {
     display: flex;
     min-height: 100vh;
+    padding: 0;
 }
 
 .layout-2_main {
@@ -55,7 +57,7 @@ p {
 .layout-2_aside {
     min-width: 50%;
     display: none;
-    background: url('/assets/backdrop.jpg');
+    background: url("/assets/backdrop.jpg");
     background-size: contain;
 }
 @media screen and (min-width: 600px) {
@@ -117,6 +119,47 @@ h2,
 h3,
 h4,
 h5,
-h6{
-    text-decoration:none;
+h6 {
+    text-decoration: none;
+}
+
+li {
+    list-style-type: none;
+}
+
+.item {
+    display: block;
+    margin: auto;
+    padding: 32px;
+    min-width: 300px;
+    max-width: 600px;
+    border-bottom: 1px solid #dddddd;
+}
+
+.letter {
+    font-size: 24px;
+    border-radius: 50%;
+    display: inline-block;
+    height: 1.5em;
+    width: 1.5em;
+    line-height: 1.5em;
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: normal;
+    vertical-align:middle;
+    margin-right: 8px;
+}
+
+.red {
+    background-color: red;
+}
+.blue {
+    background-color: #0d47a1;
+}
+.green {
+    background-color: #0da147;
+}
+.purple {
+    background-color: purple;
 }
