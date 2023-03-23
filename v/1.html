@@ -1,0 +1,9 @@
+<html>
+     <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    </head>
+    <body>
+        <div id='code'>Fatal error: Uncaught <span class='p'>mysqli_sql_exception</span>: You have an error in your SQL syntax; check the manual that corresponds to your <span class='p'>MariaDB server</span> version for the right syntax to use near 'hello'))=uPassword LIMIT 1' at line 1 in /data/data/com.termux/files/home/www/sqlinjection/backend/implementation-unsafe.php:22 Stack trace: #0 /data/data/com.termux/files/home/www/sqlinjection/backend/implementation-unsafe.php(22): <span class='p'>mysqli->query</span>('SELECT userId F...') #1 /data/data/com.termux/files/home/www/sqlinjection/login.php(25): SimpleUsers->loginUser(''', 'hello') #2 /data/data/com.termux/files/home/www/sqlinjection/router.php(30): include('/data/data/com....') #3 {main} thrown in /data/data/com.termux/files/home/www/sqlinjection/backend/implementation-unsafe.php on line 22</div>
+    </body>
+   <script src="/v/slides.js"></script>
+</html>

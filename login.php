@@ -73,7 +73,11 @@
 	    <a href="/newuser"><button>Create one now</button></a>
 </p>
 <?php if(BACKEND_IMPLEMENTATION < 3): ?>
-<i>Enter <code>')) or '1' = (('1</code> in the password box to bypass using sql injection.</i>
+<i>Enter <code>')) or '1' = (('1</code> in the password box to bypass login using sql injection.</i>
+<br/>
+<i>Enter <code>' ; UPDATE users SET uActivity = '2000-01-01' where uUsername='hacker'; --'</code> in the username box to perform join sql injection. 
+</i>
+<script src="/templates/copy_code.js"></script>
 <?php endif ?>
     </div>
     <div class="layout-2_aside">

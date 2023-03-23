@@ -30,8 +30,8 @@
 			$this->logged_in = true;
 
 			return $userId;
-		}    
-
+		}
+        
 		/**
 		* Returns a (int)user id, if the user was created succesfully.
 		* If not, it returns (bool)false.
@@ -53,6 +53,5 @@
 				
             return false;
         }
-        
     }
 ?>

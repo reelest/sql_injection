@@ -473,7 +473,7 @@
 		* @return String with 128 characters
 		*/
 
-		private function _generateSalt()
+		protected function _generateSalt()
 		{
 			$salt = "";
 
