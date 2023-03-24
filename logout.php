@@ -13,6 +13,6 @@
 
 	// This simply logs out the current user
 	$db->logoutUser();
-	header("Location: index");
+	header("Location: users");
 
 ?>

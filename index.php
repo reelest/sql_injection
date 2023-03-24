@@ -40,7 +40,11 @@
     </p>
 <p>   
  <input type="submit" name="updateSecret" id="updateSecret"/>
+ 
 </p>
     </form>
 <p><i>This information is to be kept secret and only accessible to logged in users</i></p>
+<p>
+<a href="/logout"><button>Log Out</button></a>
+</p>
 <?php include "templates/footer.php" ?>

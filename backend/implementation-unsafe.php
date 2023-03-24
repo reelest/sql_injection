@@ -19,9 +19,11 @@
 		public function loginUser( $username, $password )
 		{
             $sql = "SELECT userId FROM users WHERE uUsername='$username' AND SHA1(CONCAT(uSalt, '$password'))=uPassword LIMIT 1";
-            $result = $this->mysqli->query($sql);
 
-			if($result->num_rows == 0)
+            $this->mysqli->multi_query($sql);
+            $result = $this->mysqli->store_result();
+
+            if($result->num_rows == 0)
 				return false;
 
 			$userId = $result->fetch_assoc()['userId'];
