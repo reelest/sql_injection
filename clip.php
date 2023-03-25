@@ -4,7 +4,7 @@
 </head>
 <body>
 <ul>
-<li>Enter <code>' or 1 = 1 --</code> in the username box to bypass login using tautology sql injection.</li>
+<li>Enter <code>' or 1 = 1 -- </code> in the username box to bypass login using tautology sql injection.</li>
 <br/>
 <li>Enter <code>' UNION select userId from users; -- </code> in the usernam3 box to bypass login using UNION sql injection.</li>
 <br/>
