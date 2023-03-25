@@ -22,13 +22,8 @@
             include($path."/implementation-unsafe.php");
             break;
 
-        case 3:
-            /* 3 - This backend is vulnerable to character encoding based sql injection attacks. */
-            include($path."/implementation-unsafe.php");
-            break;
-        
         /* Reference implementation */
-        case 4:
+        case 3:
             /* 0 - This backend is not vulnerable to sql injection because it uses prepared statements.*/
             include($path."/implementation-safe.php");
             break;
