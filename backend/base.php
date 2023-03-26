@@ -197,6 +197,33 @@
 			return $userInfo;
 		}
 
+ 
+		/**
+		* Returns a (int)user id, if the user was created succesfully.
+		* If not, it returns (bool)false.
+		*
+		* @param	username	The desired username
+		*	@param	password	The desired password
+		*	@return	The user id or (bool)false (if the user already exists)
+		*/
+
+		public function createUser( $username, $password )
+		{
+			$salt = $this->_generateSalt();
+			$password = $salt.$password;
+
+			$sql = "INSERT INTO users VALUES (NULL, ?, SHA1(?), ?, NOW(), NOW())";
+			if( !$this->stmt = $this->mysqli->prepare($sql) )
+				throw new Exception("MySQL Prepare statement failed: ".$this->mysqli->error);
+
+			$this->stmt->bind_param("sss", $username, $password, $salt);
+			if( $this->stmt->execute() )
+				return $this->stmt->insert_id;
+				
+			return false;
+		}
+
+
 		/**
 		* Logout the active user, unsetting the userId session.
 		* This is a void function
