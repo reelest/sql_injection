@@ -14,7 +14,7 @@
     include "templates/header.php";
 ?>
   	</head>
-	<body>
+	<body style="padding-left:0;padding-right:0;">
         <h1>Users List</h1>
         <?php 
             $i = 0;

